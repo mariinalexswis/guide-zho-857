@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资料整理视角下的爱游戏 · 索引与归档</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #faf7f2;
+      font-family: 'Georgia', 'Noto Serif SC', 'SimSun', serif;
+      color: #2d2a26;
+      line-height: 1.7;
+      padding: 2rem 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 780px;
+      width: 100%;
+      margin: 0 auto;
+      background: #fffcf8;
+      padding: 2.5rem 2.2rem;
+      box-shadow: 0 1px 12px rgba(0, 0, 0, 0.03), 0 0 0 1px #f0ebe4;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 540px) {
+      body { padding: 1rem 0.6rem; }
+      .page { padding: 1.8rem 1.2rem; }
+    }
+
+    .meta-line {
+      font-size: 0.82rem;
+      color: #9b9289;
+      letter-spacing: 0.4px;
+      border-bottom: 1px solid #e8e1d8;
+      padding-bottom: 0.8rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .meta-line span {
+      background: #f3ede6;
+      padding: 0.1rem 0.6rem;
+      border-radius: 12px;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #3d3530;
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
+    }
+
+    .subhead {
+      font-size: 1rem;
+      color: #7a7169;
+      font-style: italic;
+      margin-bottom: 2rem;
+      border-left: 3px solid #d7cdbe;
+      padding-left: 1.2rem;
+    }
+
+    .opening {
+      font-size: 1.05rem;
+      margin-bottom: 1.8rem;
+      text-align: left;
+    }
+
+    .opening strong {
+      font-weight: 600;
+      color: #4e433c;
+    }
+
+    .pull-quote {
+      background: #f5efe8;
+      padding: 1.5rem 1.8rem;
+      margin: 1.8rem 0;
+      border-radius: 0 6px 6px 0;
+      border-left: 5px solid #b8a490;
+      font-style: normal;
+      color: #3f3832;
+      box-shadow: inset 0 0 0 1px #ede6dd;
+    }
+
+    .pull-quote p {
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
+    }
+
+    .pull-quote .source {
+      margin-top: 0.5rem;
+      text-align: right;
+      font-size: 0.85rem;
+      color: #847b71;
+    }
+
+    .body-text {
+      margin: 1.5rem 0 1.2rem 0;
+      text-indent: 1.8rem;
+    }
+
+    .list-head {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      margin-bottom: 0.8rem;
+      color: #4e433c;
+      border-bottom: 1px dashed #ddd3c8;
+      padding-bottom: 0.4rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .feature-list li {
+      padding: 0.6rem 0 0.6rem 2rem;
+      position: relative;
+      border-bottom: 1px dotted #e8ded4;
+      font-size: 0.98rem;
+    }
+
+    .feature-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0.2rem;
+      color: #a4927e;
+      font-size: 1.1rem;
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .info-box {
+      background: #f9f4ed;
+      border: 1px solid #e5dbcf;
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0 1.5rem 0;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    .info-box strong {
+      color: #4e433c;
+    }
+
+    .closing-note {
+      margin-top: 2.2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e8e1d8;
+      font-size: 0.97rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .closing-note a {
+      color: #7f6b58;
+      text-decoration: none;
+      border-bottom: 1px dotted #b8a490;
+      transition: border-bottom 0.15s;
+    }
+
+    .closing-note a:hover {
+      border-bottom: 1px solid #5f4d3c;
+    }
+
+    .faq-mini {
+      margin-top: 2rem;
+      background: #fcf9f5;
+      padding: 1.2rem 1.5rem;
+      border-radius: 2px;
+      border: 1px solid #ece4da;
+    }
+
+    .faq-mini h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #5a4f46;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.3px;
+    }
+
+    .faq-mini p {
+      font-size: 0.93rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-mini .q {
+      font-weight: 500;
+      color: #4e433c;
+    }
+
+    .faq-mini .a {
+      color: #4c443d;
+      padding-left: 0.6rem;
+      margin-bottom: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="meta-line">
+    <span>资料索引 · 信息整理</span>
+    <span># 游戏内容档案</span>
+  </div>
+
+  <h1>爱游戏 · 从资料到索引</h1>
+  <div class="subhead">一份基于整理视角的叙事笔记</div>
+
+  <div class="opening">
+    <strong>信息过载的时代，反而更考验整理的耐心。</strong> 当大量游戏内容散落在各处，一个清晰、克制的资料索引便成为知识流动的起点。本文从资料整理与信息结构化的角度，重新梳理 <a href="https://appline-igame.com" style="color:#7f6b58; border-bottom:1px dotted #b8a490; text-decoration:none;">爱游戏</a> 所承载的内容脉络，不堆砌定义，只做温和的归档。
+  </div>
+
+  <div class="pull-quote">
+    <p>“整理不是把东西放整齐，而是让信息之间的关联变得可见。”<br>—— 来自某份数字资源管理笔记</p>
+    <div class="source">—— 引用 · 通用原则</div>
+  </div>
+
+  <p class="body-text">
+    在接触「爱游戏」这个信息节点时，我首先注意到的并非功能罗列，而是其内容指向的丰富度：从界面布局到交互反馈，从主题分类到版本沿革，每一个细节都暗示着整理者试图建立一种有序的呈现方式。这种秩序感，恰好是资料索引最核心的价值。
+  </p>
+
+  <div class="list-head">▸ 资料整理视角下的几个锚点</div>
+  <ul class="feature-list">
+    <li><strong>内容分层的习惯</strong> —— 将信息按主题或使用场景拆解，降低一次性认知负荷，这与传统卡片索引或数字标签的思路一致。</li>
+    <li><strong>版本与来源标注</strong> —— 保持对信息时效性的敏感，不混淆新旧内容，这是资料工作者最基本的实践。</li>
+    <li><strong>结构而非堆砌</strong> —— 有意识的组织优于无差别的罗列，好的索引本身也是一种叙事。</li>
+    <li><strong>克制的引导</strong> —— 不夸大、不诱导，只提供可追溯的信息入口，让使用者自行判断。</li>
+  </ul>
+
+  <div class="info-box">
+    <strong>提示：</strong> 如果你正在探索某个内容方向，不妨把 <a href="https://appline-igame.com" style="color:#7f6b58; border-bottom:1px dotted #b8a490; text-decoration:none;">爱游戏</a> 看作一个资料节点，而非终点。信息的价值往往取决于你如何连接它。
+  </div>
+
+  <p class="body-text">
+    在整理过程中，我发现任何信息集合都面临同样的挑战：如何让不同背景的人快速找到自己需要的片段，又不被无关内容干扰。这个平衡点没有标准答案，但每次尝试都值得被记录。<a href="https://appline-igame.com" style="color:#7f6b58; border-bottom:1px dotted #b8a490; text-decoration:none;">爱游戏</a> 所代表的正是这样一种持续的整理实践，它不追求完美，但追求清晰。
+  </p>
+
+  <div class="faq-mini">
+    <h3>▸ 常见问题摘要（资料整理向）</h3>
+    <p><span class="q">Q：</span> 面对大量内容，如何确定整理优先级？<br>
+    <span class="a">A：</span> 通常先按来源或主题分组，再根据使用频率微调，不必一次到位。</p>
+    <p><span class="q">Q：</span> 索引是否需要包含所有细节？<br>
+    <span class="a">A：</span> 不必。索引的价值在于指向，而非替代原文。适度留白反而有利于聚焦。</p>
+    <p><span class="q">Q：</span> 资料整理中最容易忽略的是什么？<br>
+    <span class="a">A：</span> 记录整理时间与信息来源。没有上下文的索引，会随着时间变得模糊。</p>
+  </div>
+
+  <div class="closing-note">
+    <span>— 本文基于个人整理经验，仅作观点分享 —</span>
+    <span><a href="https://appline-igame.com">爱游戏</a> · 信息索引页</span>
+  </div>
+
+  <!-- 下方仅作为结构化元数据，不显示 -->
+  <div style="display:none;">seed:0dc3c78c15909fe0</div>
+</div>
+</body>
+</html>
