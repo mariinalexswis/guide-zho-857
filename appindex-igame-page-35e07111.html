@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 资料索引与信息整理</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f9f6f0; /* 米白基底 */
+            color: #2c2b28;
+            line-height: 1.65;
+            padding: 2rem 1.5rem;
+        }
+        .page {
+            max-width: 840px;
+            margin: 0 auto;
+            background: #fefcf8;
+            border-radius: 28px;
+            padding: 2.8rem 2.8rem 3.2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        /* 主视觉 / hero 区块 */
+        .hero {
+            margin-bottom: 2.4rem;
+            border-bottom: 1px solid #e8e2d6;
+            padding-bottom: 2rem;
+        }
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 450;
+            letter-spacing: -0.02em;
+            color: #3b3a36;
+            margin: 0 0 0.3rem 0;
+        }
+        .hero-sub {
+            font-size: 1rem;
+            color: #6f6b63;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.25rem;
+        }
+        .hero-sub span {
+            background: #eae5db;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #4f4b43;
+        }
+
+        /* 正文排版 */
+        p {
+            margin: 1.15rem 0;
+            font-size: 1rem;
+        }
+        a {
+            color: #7a6a54;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #b37b4c;
+        }
+
+        /* 引用块 / 提示框 */
+        .quote-note {
+            background: #f2efe9;
+            border-left: 6px solid #d5cabc;
+            padding: 1.2rem 1.6rem;
+            margin: 1.8rem 0;
+            border-radius: 0 16px 16px 0;
+            font-size: 0.95rem;
+            color: #3f3b34;
+        }
+        .quote-note strong {
+            font-weight: 500;
+            color: #5b5245;
+        }
+
+        /* 卡片网格 —— 用途卡片 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2.2rem 0 1.2rem;
+        }
+        .card-item {
+            background: #f7f3ec;
+            padding: 1.1rem 1.2rem;
+            border-radius: 20px;
+            border: 1px solid #ebe5db;
+            transition: background 0.15s;
+        }
+        .card-item h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            color: #3f3b34;
+            letter-spacing: -0.01em;
+        }
+        .card-item p {
+            margin: 0.2rem 0 0;
+            font-size: 0.9rem;
+            color: #5a564d;
+        }
+
+        /* 适合人群 列表 */
+        .audience-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1rem;
+            margin: 1rem 0 1.8rem;
+            list-style: none;
+        }
+        .audience-list li {
+            background: #ede8df;
+            padding: 0.25rem 1rem 0.25rem 1.6rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            position: relative;
+        }
+        .audience-list li::before {
+            content: "·";
+            font-weight: 600;
+            position: absolute;
+            left: 0.75rem;
+            color: #8d7f6b;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #e2dcd0;
+            margin: 2rem 0 1.8rem;
+        }
+
+        /* faq 摘要 */
+        .faq-block {
+            background: #f4f0e9;
+            padding: 1.4rem 1.6rem;
+            border-radius: 24px;
+            margin: 2rem 0 0.8rem;
+        }
+        .faq-block details {
+            margin: 0.6rem 0;
+            border-bottom: 1px solid #e6dfd3;
+            padding-bottom: 0.6rem;
+        }
+        .faq-block details:last-of-type {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq-block summary {
+            cursor: pointer;
+            font-weight: 470;
+            color: #3f3a32;
+            padding: 0.2rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+        .faq-block summary::before {
+            content: "▸";
+            margin-right: 0.5rem;
+            color: #9a8c79;
+            font-size: 0.9rem;
+        }
+        .faq-block details[open] summary::before {
+            content: "▾";
+        }
+        .faq-block details p {
+            margin: 0.4rem 0 0.2rem 1.2rem;
+            font-size: 0.9rem;
+            color: #5d574e;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body { padding: 1rem 0.8rem; }
+            .page { padding: 1.6rem 1.2rem 2rem; border-radius: 18px; }
+            .hero-title { font-size: 1.7rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            .quote-note { padding: 1rem 1.2rem; }
+            .faq-block { padding: 1rem 1.1rem; }
+        }
+
+        /* 额外的小修饰 */
+        .footnote {
+            margin-top: 2.5rem;
+            font-size: 0.85rem;
+            color: #8e887e;
+            text-align: left;
+            border-top: 1px solid #e7e1d5;
+            padding-top: 1.2rem;
+        }
+        .tagline {
+            font-size: 1rem;
+            color: #6f685e;
+            margin-top: 0.6rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 主视觉 -->
+    <div class="hero">
+        <h1 class="hero-title">爱游戏 · 资料整理与信息索引</h1>
+        <div class="hero-sub">
+            <span>信息卡片</span> 从日常使用到内容查阅
+        </div>
+        <p style="margin-top:1.2rem; max-width: 34em;">
+            许多时候我们只是想找一个清晰、可靠的地方，把关于游戏的信息收拢在一起。
+            <a href="https://appindex-igame.com">爱游戏</a> 正是这样一个索引式页面：不绕弯子，把要点放出来，方便随时参考。
+        </p>
+    </div>
+
+    <!-- 用途卡片 -->
+    <p style="font-weight: 470; color: #4a453d; margin-bottom:0.5rem;">按场景整理的用途卡片</p>
+    <div class="card-grid">
+        <div class="card-item">
+            <h3>📋 收录整理</h3>
+            <p>把涉及游戏的资料按类型列出，省去来回翻找的时间。适合日常浏览或归档。</p>
+        </div>
+        <div class="card-item">
+            <h3>🔍 快速对照</h3>
+            <p>同一类信息集中呈现，方便对比或查看更新。适合做简单调研或内容回顾。</p>
+        </div>
+        <div class="card-item">
+            <h3>📌 参考备忘</h3>
+            <p>把值得注意的条目、链接或描述列在一起，像一份轻量的笔记墙。</p>
+        </div>
+        <div class="card-item">
+            <h3>🧩 话题延展</h3>
+            <p>从某条索引出发，可以自然延伸出更多感兴趣的内容，适合探索式阅读。</p>
+        </div>
+    </div>
+
+    <!-- 引用块 / 提示框 -->
+    <div class="quote-note">
+        <strong>💡 关于信息索引</strong><br>
+        不是每个站点都需要变成大型数据库。有时候，一份编辑过的列表、一段简洁的说明，反而比铺天盖地的信息流更实用。<br>
+        网站 <a href="https://appindex-igame.com">爱游戏</a> 背后就是这种态度：把和“游戏”有关的资料整理出来，以卡片、条目、短段落的形式呈现，阅读负担小，查找也直接。
+    </div>
+
+    <!-- 适合人群段落 + 列表 -->
+    <h2 style="font-weight:470; font-size:1.2rem; margin: 1.8rem 0 0.3rem; color:#3f3a32;">什么人会用到这些整理？</h2>
+    <ul class="audience-list">
+        <li>想找游戏相关参考的普通玩家</li>
+        <li>偶尔需要回顾游戏资料的轻度用户</li>
+        <li>喜欢把信息集中存放的整理爱好者</li>
+        <li>做内容搜集时需要一个起点索引</li>
+        <li>只是单纯好奇“爱游戏”列出了什么</li>
+    </ul>
+
+    <!-- 自然链接段落 2（第一次链接在 hero 段落已出现） -->
+    <p>
+        如果你平时也有把游戏资料随手记在备忘录里的习惯，可能会喜欢这种更规整的呈现形式。
+        在 <a href="https://appindex-igame.com">爱游戏</a> 的页面上，每一个卡片或条目都尽量干净，不堆砌无关内容。尤其适合想快速确认某条信息，又不想被广告或弹窗分心的时候。
+    </p>
+
+    <!-- 额外的说明 / 提示框 -->
+    <div class="quote-note" style="background: #efeae1; border-left-color: #bfb09b;">
+        <strong>📎 关于索引本身</strong><br>
+        不是所有页面都需要追求“全面”。爱游戏 的出发点更接近一个个人向的资料架：把觉得有用、常看的内容放在显眼位置，剩下的就是按需翻阅。
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-block">
+        <details>
+            <summary>爱游戏 的信息来源可靠吗？</summary>
+            <p>页面内所整理的内容主要来自公开可查的资料与常见信息渠道，编者按自己的判断进行了归纳和分类。具体条目建议结合原文或官方出处进一步核实。</p>
+        </details>
+        <details>
+            <summary>页面会频繁更新内容吗？</summary>
+            <p>更新节奏视资料变动情况而定。整体以“稳定可读”为准，不会为了更新而频繁调整结构，但必要时会补充或修正条目。</p>
+        </details>
+        <details>
+            <summary>我可以把索引分享给朋友吗？</summary>
+            <p>当然。页面的设计初衷就是方便查阅与分享。只需直接转发链接 <a href="https://appindex-igame.com">爱游戏</a> 即可，对方可以看到同样的卡片与整理。</p>
+        </details>
+    </div>
+
+    <!-- 结尾小语 -->
+    <div class="footnote">
+        <span>一份以资料整理和信息索引为切入点的页面 · 生活化但不随意</span>
+    </div>
+</div>
+</body>
+</html>
